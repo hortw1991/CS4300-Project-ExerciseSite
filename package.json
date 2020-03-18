@@ -1,0 +1,20 @@
+{
+  "name": "cs4300-project-exercisesite",
+  "version": "1.0.0",
+  "description": "cs4300 final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hortw1991/CS4300-Project-ExerciseSite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hortw1991/CS4300-Project-ExerciseSite/issues"
+  },
+  "homepage": "https://github.com/hortw1991/CS4300-Project-ExerciseSite#readme",
+  "dependencies": {}
+}

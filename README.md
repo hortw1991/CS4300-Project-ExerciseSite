@@ -8,8 +8,9 @@ Our website is going to be a fitness centric site, specializing in letting users
 * First page will be a generic landing page, listing new site developments, new workouts, and any other breaking news.
 * We will have a page of preset workouts allowing the users to focus on building strength, cardio, or various combinations.
 * There will be a page allowing you to search workouts by muscle type, bodyweight or free weights, benches, and various other options.
-* The fourth page will be a “workout recipe” page that allows users to build and combine custom sets of exercises. They will also be able to add this from the exercise search page above.
-* The fifth page will be a user-stored page where they will be able to view, select, and edit their own personal workouts.
+* The fourth page will be a article page that allows users to view all or search for articles about
+  the benefit of certain exercises
+* The fifth page is an about us page with our information and our philosophy
 
 Our SQL database will focus on 3 types of data: user data (aka user stored workouts and settings), exercise data (individual exercises), and workout sets.
 
@@ -17,11 +18,10 @@ Our SQL database will focus on 3 types of data: user data (aka user stored worko
 * Exercise data will be the most basic type of data. It will have the name of the exercise, keyword muscle groups, and other information like bench, warnings, or things that the user may or may not want to focus on. For example, “hammer curls” would contain the keyword “bicep” so that when the user searches bicep or arm, this is returned in the query.
 * Workout data is essentially a name for the workout and a link to the SQL key containing stored exercises.
 
-Our database queries will focus around retreiving exercises, sets of exercises, and stored workouts from the user.
+Our database queries will focus around retreiving exercises, sets of exercises, and articles pertaining to a specific topic from the user
 
 * For user workouts, the query might be as simple as ‘SELECT * FROM USER_WORKOUT WHERE USERNAME == “USER”. Any other data should be able to be essentially the same lookup.
 * Workout data is similar to user data. When the user selects options such as BICEP and FREE WEIGHT, the query would be SELECT EXERCISE_NAME from EXERCISES where BICEP == 1 and FREE_WEIGHT == 1. It may be possible these would just look up an image link to take youto the specific BICEP workout exercise page.
-* Workouts that combine exercise data is most likely the more complicated query, but it really only would need to join the exercise table with the user table to return workouts that the user has selected, or even just all workouts from a preconfigured checkbox of what the user is looking for. Workouts are built from single exercises combined into a list.
 
 The user data will have login information, exercise search, and workout searches
 

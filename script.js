@@ -1,9 +1,11 @@
 /* Example function to create a new "article of the day" on the main page.
+ * 
+ * Info will obviously need to come from the database in further versions.
  */
 function addArticleOfDay() {
 	// div
 	let outerDiv = document.createElement('div');
-	let outerDivClass = "media pb-4";
+	let outerDivClass = "media pb-4 ml-5";
 	outerDiv.className = outerDivClass;
 
 	// img
@@ -25,7 +27,7 @@ function addArticleOfDay() {
 	// heading 5
 	let h5 = document.createElement('h5');
 	let h5Class = "mt-0";
-	h5.innerHTML = "Exercise of the Day: Not Deadlift"
+	h5.innerHTML = "Not Deadlift"
 	h5.className = h5Class;
 
 	// paragraphs
@@ -37,7 +39,9 @@ function addArticleOfDay() {
 	innerDiv.appendChild(h5);
 	innerDiv.appendChild(p1);
 
-	let body = document.getElementsByTagName("body")[0];
-	body.appendChild(outerDiv);
-	
+	// Append to second to last element to keep the button below
+	let body = document.body;
+	let btn = document.getElementById('article-button');
+	body.insertBefore(outerDiv, btn);
+
 }

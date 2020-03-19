@@ -1,11 +1,10 @@
 # General Notes
 
-* Switching from build a plan to an article section is probably easier than
-  having the users have to search and switch.  Instead we could just have the
-  users favorite exercises/workouts they like
-* Nothing says we have to register users so I changed it to an about.  We 
-  meet our quota of dynamic and interactive pages in both searching for workouts,
-  exercises, and articles.
+* Decide how we want to select workouts / exercises.  Do we just select from a dropdown?
+
+
+
+
 
 ## Bootstrap Info
 
@@ -16,7 +15,7 @@ just class="article".
 ## TODO
 
 - [x] navbar
-- [ ] Sidebar for main page
+- [x] Sidebar for main page
 - [ ] Mock article page
 - [ ] Mock workout page
 - [ ] Mock exercises page

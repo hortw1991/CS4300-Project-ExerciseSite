@@ -47,3 +47,6 @@ function addArticleOfDay() {
 	// Scroll the window in view
 	window.scrollBy(0, 100);
 }
+
+/* Dynamically changes the pictures baced off the selection.
+ */

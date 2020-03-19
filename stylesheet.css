@@ -8,3 +8,16 @@
 	width: 64px;
 }
 
+#exercise-pic {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	max-height: 500px;
+	max-width: 1500px;
+}
+
+.select-form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

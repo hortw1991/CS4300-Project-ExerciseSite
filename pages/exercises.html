@@ -49,22 +49,38 @@
 			<a class="nav-link text-info" href="../pages/ourphilosophy.html">Our Philosophy <span class="sr-only">(current)</span></a>
 		</div>
 	</nav>
+	<img id="exercise-pic" src="../assets/jogger-shadow.jpg" class="img-fluid center-block mt-2" alt="Responsive image">	
 	
-
-	
-	<div class="card text-center">
+	<div class="card text-center mt-4">
 		<div class="card-header">
-			Featured
+			Individual Exercises
 		</div>
 		<div class="card-body">
-			<h5 class="card-title">Special title treatment</h5>
-			<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-			<a href="#" class="btn btn-primary">Go somewhere</a>
-		</div>
-		<div class="card-footer text-muted">
-			2 days ago
+			<h5 class="card-title"></h5>
+			<p class="card-text">Search for an exercise by keyword or select from all exercises.</p>
+			<p>Note: the picture will change based off a value in our database corresponding to 
+				each exercise and workout.</p>
+			<form class="form-inline my-2 my-lg-0 select-form">
+				<input class="form-control mr-sm-2 form-control-sm" type="search" placeholder="Exercise Search" aria-label="Search">
+				<button class="btn btn-outline-info btn-sm ml-2" type="submit">Search</button>
+			</form>	
+			<br>
+			<form class="form-inline my-2 my-lg-0 select-form">
+				<select class="form-control form-control-sm mr-3" onchange="changeSelectPic()">
+					<optgroup label="Bicep">
+						<option>Bicep 1</option>
+					</optgroup>
+				</select>
+			</form>
 		</div>
 	</div>
+	<div class="card mt-2 mb-2">
+		<div class="card-body">
+		  <h5 class="card-title">Exercise Name</h5>
+		  <p class="card-text">Short description of the exercise.</p>
+		  <a href="#" class="btn btn-primary">Link to Exercise</a>
+		</div>
+	  </div>
 	
 </body>
 </html>

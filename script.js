@@ -44,4 +44,6 @@ function addArticleOfDay() {
 	let btn = document.getElementById('article-button');
 	body.insertBefore(outerDiv, btn);
 
+	// Scroll the window in view
+	window.scrollBy(0, 100);
 }

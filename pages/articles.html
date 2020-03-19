@@ -11,16 +11,16 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	
 	<!-- Our stuff -->
-	<link rel="stylesheet" href="stylesheet.css">
-	<script src="script.js"></script>
+	<link rel="stylesheet" href="../stylesheet.css">
+	<script src="../script.js"></script>
 	<title>PB Fitness</title>
 </head>
 <body>
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<!-- Logo Section - links back to original page -->
-		<a class="navbar-brand" href="index.html">
-			<img src="./assets/logo.png" alt="logo src here" width="30" height="30">
+		<a class="navbar-brand" href="../index.html">
+			<img src="../assets/logo.png" alt="logo src here" width="30" height="30">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -30,46 +30,25 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="./pages/index.html">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="./pages/workouts.html">Workouts <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="../pages/workouts.html">Workouts <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="./pages/exercises.html">Exercises <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="../pages/exercises.html">Exercises <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="./pages/articles.html">Articles<span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="../pages/articles.html">Articles<span class="sr-only">(current)</span></a>
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2 form-control-sm" type="search" placeholder="Exercise Search" aria-label="Search">
 				<button class="btn btn-outline-info btn-sm ml-2" type="submit">Search</button>
 			</form>
-			<a class="nav-link text-info" href="./pages/ourphilosophy.html">Our Philosophy <span class="sr-only">(current)</span></a>
+			<a class="nav-link text-info" href="../pages/ourphilosophy.html">Our Philosophy <span class="sr-only">(current)</span></a>
 		</div>
 	</nav>
-	
-	<!-- Main Content -->
-	<div class="jumbotron jumbotron-fluid pt-4 bg-light" id="main-display">
-		<div class="container">
-			<img id="large-main-picture" src="./assets/sitting-bicep-curl.jpg" class="rounded img-responsive thumbnail" alt="bicep-pic">
-			<h1 class="display-4">Power Bicep Fitness</h1>
-			<p class="lead">Functional Workouts.  Functional life.</p>
-		</div>
-	</div>
-	<hr>
-	<h4 class="mt-0 ml-5">Article of the Day</h4>
-	<hr>
-	<div class="media pb-4 ml-5">
-		<img id="small-main-picture" src="./assets/deadlift.jpeg" class="align-self-start mr-3" alt="img here">
-		<div class="media-body">
-			<h5 class="mt-0">Deadlift</h5>
-			<p>Deadlifting is often overlooked, but is an effective exercise.</p>
-			<p>This is because it sucks to do.</p>
-		</div>
-	</div>
-	<button class="btn btn-outline-info btn-sm m-3 pt-0 ml-5" id="article-button" type="submit" onclick="addArticleOfDay()">More Articles</button>
-	
+
 </body>
 </html>

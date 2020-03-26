@@ -2,6 +2,10 @@
 
 * Decide how we want to select workouts / exercises.  Do we just select from a dropdown?
 
+The main way the website functions is the user should go to "exercises, workouts, or articles".
+From there, they can select an individual item that will lead them to the individual-x.html
+page.
+
 
 
 
@@ -16,9 +20,12 @@ just class="article".
 
 - [x] navbar
 - [x] Sidebar for main page
-- [ ] Mock article page
-- [ ] Mock workout page
-- [ ] Mock exercises page
+- [x] Mock ALL exercises page
+- [ ] Mock ALL workouts page
+- [ ] Mock ALL articles page
+- [ ] Mock INDIVIDUAL article page
+- [ ] Mock INDIVIDUAL workout page
+- [ ] Mock INDIVIDUAL exercises page
 - [ ] About us page
 
 ## Sources

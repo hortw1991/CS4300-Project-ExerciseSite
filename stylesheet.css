@@ -21,3 +21,7 @@
 	align-items: center;
 	justify-content: center;
 }
+
+#workout-thumbnail {
+	width: 60px;
+}

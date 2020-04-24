@@ -52,28 +52,28 @@
 	
 	<div class="card text-center mt-4">
 		<div class="card-header">
-			Example Individual Full Body Workout
+			Example Individual Bicep Exercise
 		</div>
 	</div>
 	
 	<div class="media mt-4 ml-4">
 		<div class="media-body">
 			<h4 class="media-heading">Overview</h4>
-			<p id="description">This workout combines pushing and pulling with a fast pace to raise the heart rate.</p>
-			<p>Aim for 8-10 reps and 3 sets of each exercise.</p>
+			<p>This exercise targets the biceps brachii effectively.</p>
+			<p>It is best combined with a compound exercise like <a href="individual-exercise.html">bent rows.</a></p>
 		</div>
 		<div class="media-right mr-4">
-			<img src="../assets/man-mountainclimber.jpg" alt="mountain climber" class="media-object" style="width:240px">
+			<img src="../assets/sitting-bicep-curl.jpg" alt="bicep curl image" class="media-object" style="width:240px">
 		</div>
 	</div>
 	<div class="media mt-4 ml-4">
 		<div class="media-body">
 			<h4 class="media-heading">Steps:</h4>
 			<ol>
-				<li>Bicep Curls</li>
-				<li>Tricep Press</li>
-				<li>Pull</li>
-				<li>Push</li>
+				<li>Sit on a bench</li>
+				<li>Contemplate life</li>
+				<li>Play music in a futile attempt to get pumped</li>
+				<li>Go home</li>
 			</ol>
 		</div>
 	</div>
@@ -84,7 +84,6 @@
 				<li>Keep arms straight</li>
 				<li>Abs are made in the kitchen</li>
 			</ul>
-			
 		</div>
 	</div>
 </body>

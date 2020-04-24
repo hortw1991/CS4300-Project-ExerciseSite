@@ -1,3 +1,5 @@
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,37 +51,52 @@
 			<a class="nav-link text-info" href="../pages/ourphilosophy.html">Our Philosophy <span class="sr-only">(current)</span></a>
 		</div>
 	</nav>
+    <%
+		try {
+
+			String dbURL = "jdbc:mysql://localhost:3306/fitness?serverTimezone=UTC";
+			Connection con = DriverManager.getConnection(dbURL, "root", "password");
+			String query = "SELECT name from exercises;";
+
+//			PreparedStatement ps = con.prepareStatement(query);
+//
+//			ResultSet rs = ps.executeQuery();
+//			while (rs.next()) {
+//				out.println(rs.getString(1));
+//			}
+
+			con.close();
+
+		} catch (SQLException e) {
+			out.println("OH NO");
+			e.printStackTrace(new java.io.PrintWriter(out));
+		}
+		out.println("thanks");
+	%>
+
 	<img id="exercise-pic" src="../assets/jogger-shadow.jpg" class="img-fluid center-block mt-2" alt="Responsive image">	
-	
 	<div class="card text-center mt-4">
 		<div class="card-header">
 			Individual Exercises
 		</div>
 		<div class="card-body">
-			<p class="card-text">Search for an exercise by keyword or select from all exercises.</p>
-			<p>Note: the picture will change based off a value in our database corresponding to 
-				each exercise and workout.</p>
-			<form class="form-inline my-2 my-lg-0 select-form">
-				<input class="form-control mr-sm-2 form-control-sm" type="search" placeholder="Exercise Search" aria-label="Search">
-				<button class="btn btn-outline-info btn-sm ml-2" type="submit">Search</button>
-			</form>	
+			<p class="card-text">Select an Exercise.</p>
 			<br>
 			<form class="form-inline my-2 my-lg-0 select-form">
 				<select class="form-control form-control-sm mr-3" onchange="changeSelectPic()">
-					<optgroup label="Bicep">
-						<option>Bicep 1</option>
-					</optgroup>
+
+<%--					<option>Bicep 1</option>--%>
 				</select>
 			</form>
 		</div>
 	</div>
 	<div class="card mt-2 mb-2">
 		<div class="card-body">
-		  <h5 class="card-title">Exercise Name</h5>
-		  <p class="card-text">Short description of the exercise.</p>
-		  <a href="individual-exercise.html" class="btn btn-primary">Link to Exercise</a>
+			<h5 class="card-title">Exercise of the Day</h5>
+			<p class="card-text">Short description of the exercise.</p>
+			<a href="individual-exercise.html" class="btn btn-primary">Link to Exercise</a>
 		</div>
-	  </div>
-	
+	</div>
+
 </body>
 </html>

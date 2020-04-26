@@ -51,28 +51,6 @@
 			<a class="nav-link text-info" href="../pages/ourphilosophy.html">Our Philosophy <span class="sr-only">(current)</span></a>
 		</div>
 	</nav>
-    <%
-		try {
-
-			String dbURL = "jdbc:mysql://localhost:3306/fitness?serverTimezone=UTC";
-			Connection con = DriverManager.getConnection(dbURL, "root", "password");
-			String query = "SELECT name from exercises;";
-
-//			PreparedStatement ps = con.prepareStatement(query);
-//
-//			ResultSet rs = ps.executeQuery();
-//			while (rs.next()) {
-//				out.println(rs.getString(1));
-//			}
-
-			con.close();
-
-		} catch (SQLException e) {
-			out.println("OH NO");
-			e.printStackTrace(new java.io.PrintWriter(out));
-		}
-		out.println("thanks");
-	%>
 
 	<img id="exercise-pic" src="../assets/jogger-shadow.jpg" class="img-fluid center-block mt-2" alt="Responsive image">	
 	<div class="card text-center mt-4">
@@ -82,11 +60,30 @@
 		<div class="card-body">
 			<p class="card-text">Select an Exercise.</p>
 			<br>
-			<form class="form-inline my-2 my-lg-0 select-form">
-				<select class="form-control form-control-sm mr-3" onchange="changeSelectPic()">
+			<form id="exercise_form" class="form-inline my-2 my-lg-0 select-form" action="individual-exercise.jsp" method="post" name="exercise">
+				<select class="form-control form-control-sm mr-3" name="exercise_list">
+					<%
+						try {
+							String dbURL = "jdbc:mysql://localhost:3306/fitness?serverTimezone=UTC";
+							Connection con = DriverManager.getConnection(dbURL, "root", "password");
+							String query = "SELECT name from exercises;";
 
-<%--					<option>Bicep 1</option>--%>
+							PreparedStatement ps = con.prepareStatement(query);
+
+							ResultSet rs = ps.executeQuery();
+							int counter = 0;
+							while (rs.next()) {
+								out.println("<option value=" + counter +  ">" + rs.getString(1) + "</option>");
+								counter++;
+							}
+						
+						} catch (SQLException e) {
+							e.printStackTrace(new java.io.PrintWriter(out));
+						}
+					%>
 				</select>
+				<button type="submit" class="btn btn-primary">Submit</button>
+
 			</form>
 		</div>
 	</div>

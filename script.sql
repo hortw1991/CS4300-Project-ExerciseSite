@@ -28,6 +28,7 @@ PRIMARY KEY(id)
 CREATE TABLE difficulty (
 id int NOT NULL,
 level varchar(45) NOT NULL,
+warning varchar(255),
 PRIMARY KEY(id)
 );
 
@@ -81,11 +82,11 @@ VALUES
 (9, "deltoid head");
 
 INSERT INTO
-difficulty (id, level)
+difficulty (id, level, warning)
 VALUES
-(0, "beginner"),
-(1, "intermediate"),
-(2, "expert");
+(0, "beginner", "This is fine for any level of experience."),
+(1, "intermediate", "We recommend that someone shows you the ropes if this is your first time."),
+(2, "expert", "Make sure you know what you're doing, or you risk injury (or an inefficient workout).");
 
 INSERT INTO
 exercises(id, name, description, primary_muscle, secondary_muscle, difficulty)
@@ -170,5 +171,5 @@ VALUES
 "This exclusively focuses on the lower body and can be adjusted with high weights or high reps, or both.",
 11, 14, 10, 2);
 
-select * from workouts;
+select * from exercises;
 

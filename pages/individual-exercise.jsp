@@ -1,3 +1,5 @@
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +10,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
+
 	<!-- Our stuff -->
 	<link rel="stylesheet" href="../stylesheet.css">
 	<script src="../script.js"></script>
@@ -49,41 +51,146 @@
 			<a class="nav-link text-info" href="../pages/ourphilosophy.html">Our Philosophy <span class="sr-only">(current)</span></a>
 		</div>
 	</nav>
-	
 	<div class="card text-center mt-4">
 		<div class="card-header">
-			Example Individual Bicep Exercise
+			<%
+				try {
+					int choice = Integer.parseInt(request.getParameter("exercise_list"));
+					String dbURL = "jdbc:mysql://localhost:3306/fitness?serverTimezone=UTC";
+					Connection con = DriverManager.getConnection(dbURL, "root", "password");
+					String query = "SELECT name FROM exercises WHERE id = ?;";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setInt(1, choice);
+
+					// Must move the cursor to the first object in the row
+					ResultSet rs = ps.executeQuery();
+					rs.first();
+					out.println(rs.getString(1));
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace(new java.io.PrintWriter(out));
+				}
+			%>
 		</div>
 	</div>
-	
+	<%-- NOTE!!!!!!!!!!!!!!!!! --%>
+	<%-- The exercises page passes in the ID of the exercise selected --%>
+
 	<div class="media mt-4 ml-4">
 		<div class="media-body">
-			<h4 class="media-heading">Overview</h4>
-			<p>This exercise targets the biceps brachii effectively.</p>
-			<p>It is best combined with a compound exercise like <a href="individual-exercise.html">bent rows.</a></p>
+			<%-- <p> Query: exercises.description --%>
+			<h4 class="media-heading">Description:</h4>
+			<%
+                try {
+					int choice = Integer.parseInt(request.getParameter("exercise_list"));
+					String dbURL = "jdbc:mysql://localhost:3306/fitness?serverTimezone=UTC";
+					Connection con = DriverManager.getConnection(dbURL, "root", "password");
+					String query = "SELECT description FROM exercises WHERE id = ?;";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setInt(1, choice);
+
+					// Must move the cursor to the first object in the row
+					ResultSet rs = ps.executeQuery();
+					rs.first();
+					out.println(rs.getString(1));
+				} catch (SQLException e) {
+					e.printStackTrace(new java.io.PrintWriter(out));
+				}
+			%>
+			
 		</div>
 		<div class="media-right mr-4">
 			<img src="../assets/sitting-bicep-curl.jpg" alt="bicep curl image" class="media-object" style="width:240px">
 		</div>
 	</div>
+	
 	<div class="media mt-4 ml-4">
 		<div class="media-body">
-			<h4 class="media-heading">Steps:</h4>
-			<ol>
-				<li>Sit on a bench</li>
-				<li>Contemplate life</li>
-				<li>Play music in a futile attempt to get pumped</li>
-				<li>Go home</li>
-			</ol>
+			<h4 class="media-heading">Primary Muscle:</h4>
+			<%
+				try {
+					String select = request.getParameter("exercise_list");
+					int choice = Integer.parseInt(select);
+					String dbURL = "jdbc:mysql://localhost:3306/fitness?serverTimezone=UTC";
+					Connection con = DriverManager.getConnection(dbURL, "root", "password");
+					String query = "SELECT DISTINCT muscles.name " +
+							"FROM muscles join exercises " +
+							"ON exercises.primary_muscle = muscles.id " +
+							"WHERE exercises.id = ?" +
+							"AND exercises.primary_muscle = muscles.id;";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setString(1, select);
+
+					// Must move the cursor to the first object in the row
+					ResultSet rs = ps.executeQuery();
+					rs.first();
+					out.println("<ul><li>" + rs.getString(1) + "</ul></li>");
+					query = "SELECT DISTINCT secondary_muscles.name " +
+							"FROM secondary_muscles join exercises " +
+							"ON exercises.secondary_muscle = secondary_muscles.id " +
+							"WHERE exercises.id = ?" +
+							"AND exercises.secondary_muscle = secondary_muscles.id;";
+					ps = con.prepareStatement(query);
+					ps.setString(1, select);
+					rs = ps.executeQuery();
+					rs.first();
+					out.println("<h4 class=\"media-heading\">Secondary Muscle:</h4>");
+					out.println("<ul><li>" + rs.getString(1) + "</ul></li>");
+
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace(new java.io.PrintWriter(out));
+				}
+
+			%>
+			<h4 class="media-heading">Difficulty:</h4>
+
+			<%
+				try {
+					String select = request.getParameter("exercise_list");
+					int choice = Integer.parseInt(select);
+					String dbURL = "jdbc:mysql://localhost:3306/fitness?serverTimezone=UTC";
+					Connection con = DriverManager.getConnection(dbURL, "root", "password");
+
+					// First get the exercise ID to link to difficulty
+					String query = "SELECT exercises.difficulty FROM exercises WHERE exercises.id = ?";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setString(1, select);
+
+					ResultSet rs = ps.executeQuery();
+					rs.first();
+					int difficulty = Integer.parseInt(rs.getString(1));
+
+					query = "SELECT difficulty.level, difficulty.warning " +
+							"FROM difficulty " +
+							"WHERE difficulty.id = ?;";
+
+					ps = con.prepareStatement(query);
+					ps.setInt(1, difficulty);
+					rs = ps.executeQuery();
+					if (!(rs.next())) {
+						out.println("Empty Query");
+					}
+
+//					rs.first();
+					out.println("<ul><li>" +  rs.getString(1) + "</li>");
+					out.println("<li>" + rs.getString(2) + "</ul></li>");
+
+
+
+
+
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace(new java.io.PrintWriter(out));
+				}
+
+			%>
 		</div>
 	</div>
-	<div class="media mt-4 ml-4">
+	
 		<div class="media-body">
-			<h4 class="media-heading">Advanced:</h4>
-			<ul>
-				<li>Keep arms straight</li>
-				<li>Abs are made in the kitchen</li>
-			</ul>
+
 		</div>
 	</div>
 </body>

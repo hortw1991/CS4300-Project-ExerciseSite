@@ -176,10 +176,6 @@
 					out.println("<ul><li>" +  rs.getString(1) + "</li>");
 					out.println("<li>" + rs.getString(2) + "</ul></li>");
 
-
-
-
-
 					con.close();
 				} catch (SQLException e) {
 					e.printStackTrace(new java.io.PrintWriter(out));
@@ -188,10 +184,43 @@
 			%>
 		</div>
 	</div>
-	
-		<div class="media-body">
 
+    <br><br><br>
+
+	<div class="card text-center mt-4">
+		<div class="card-header">
+			Individual Exercises
 		</div>
+		<div class="card-body">
+			<p class="card-text">Select an Exercise.</p>
+			<br>
+			<form id="exercise_form" class="form-inline my-2 my-lg-0 select-form" action="individual-exercise.jsp" method="post" name="exercise">
+				<select class="form-control form-control-sm mr-3" name="exercise_list">
+					<%
+						try {
+							String dbURL = "jdbc:mysql://localhost:3306/fitness?serverTimezone=UTC";
+							Connection con = DriverManager.getConnection(dbURL, "root", "password");
+							String query = "SELECT name from exercises;";
+
+							PreparedStatement ps = con.prepareStatement(query);
+
+							ResultSet rs = ps.executeQuery();
+							int counter = 0;
+							while (rs.next()) {
+								out.println("<option value=" + counter +  ">" + rs.getString(1) + "</option>");
+								counter++;
+							}
+
+						} catch (SQLException e) {
+							e.printStackTrace(new java.io.PrintWriter(out));
+						}
+					%>
+				</select>
+				<button type="submit" class="btn btn-primary">Submit</button>
+
+			</form>
+		</div>
+	</div>
 	</div>
 </body>
 </html>

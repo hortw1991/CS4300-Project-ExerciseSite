@@ -38,7 +38,8 @@
 					<a class="nav-link" href="../pages/workouts.html">Workouts <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="../pages/exercises.html">Exercises <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="../pages/exercises.jsp">Exercises <span class="sr-only">(current)</span></a>
+
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="../pages/tips.html">Tips<span class="sr-only">(current)</span></a>
@@ -87,13 +88,5 @@
 			</form>
 		</div>
 	</div>
-	<div class="card mt-2 mb-2">
-		<div class="card-body">
-			<h5 class="card-title">Exercise of the Day</h5>
-			<p class="card-text">Short description of the exercise.</p>
-			<a href="individual-exercise.html" class="btn btn-primary">Link to Exercise</a>
-		</div>
-	</div>
-
 </body>
 </html>
